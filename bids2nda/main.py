@@ -212,7 +212,7 @@ def run(args):
         sex = list(this_subj.sex)[0]
         dict_append(image03_dict, 'gender', sex)
 
-        dict_append(image03_dict, 'image_file', file)
+        dict_append(image03_dict, 'image_file', os.path.abspath(file))
 
         suffix = file.split("_")[-1].split(".")[0]
         if suffix == "bold":

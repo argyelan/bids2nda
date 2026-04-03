@@ -331,7 +331,7 @@ def run(args):
                     if os.path.exists(events_file):
                         zipf.write(events_file, arch_name)
 
-            dict_append(image03_dict, 'data_file2', os.path.join(args.output_directory, zip_name))
+            dict_append(image03_dict, 'data_file2', os.path.abspath(os.path.join(args.output_directory, zip_name)))
             dict_append(image03_dict, 'data_file2_type', "ZIP file with additional metadata from Brain Imaging "
                                                                 "Data Structure (http://bids.neuroimaging.io)")
         else:
@@ -345,7 +345,7 @@ def run(args):
                 bvec_file = os.path.join(args.bids_directory, "dwi.bvec")
 
             if os.path.exists(bvec_file):
-                dict_append(image03_dict, 'bvecfile', bvec_file)
+                dict_append(image03_dict, 'bvecfile', os.path.abspath(bvec_file))
             else:
                 dict_append(image03_dict, 'bvecfile', "")
 
@@ -354,7 +354,7 @@ def run(args):
                 bval_file = os.path.join(args.bids_directory, "dwi.bval")
 
             if os.path.exists(bval_file):
-                dict_append(image03_dict, 'bvalfile', bval_file)
+                dict_append(image03_dict, 'bvalfile', os.path.abspath(bval_file))
             else:
                 dict_append(image03_dict, 'bvalfile', "")
             if os.path.exists(bval_file) or os.path.exists(bvec_file):

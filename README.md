@@ -101,6 +101,8 @@ This is based on experiment IDs received from NDA after setting the study up thr
 
 ## Real Life Example from April 2026: NDA Neuroimaging Upload Workflow
 
+> Working directory for this example: `/analysis/Argyelan/misc/ndar/cinema/testnewmethod`
+
 ### Tools needed
 
 - **bids2nda** — converts BIDS directory to `image03.csv` and also includes `make_scans_tsv` (see below)

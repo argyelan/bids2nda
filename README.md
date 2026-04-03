@@ -134,7 +134,7 @@ Before running on your full dataset, test with a single subject.
 mkdir -p ./test_bids
 
 # copy one subject folder
-cp -r /data/BIDS/sub-14961 ./test_bids/
+cp -r /data/BIDS/sub-1XXXX ./test_bids/
 
 # copy required BIDS metadata files
 cp /data/BIDS/dataset_description.json ./test_bids/
@@ -142,7 +142,7 @@ cp /data/BIDS/participants.tsv ./test_bids/
 
 # trim participants.tsv to only that subject (keep header + one line)
 head -1 /data/BIDS/participants.tsv > ./test_bids/participants.tsv
-grep "14961" /data/BIDS/participants.tsv >> ./test_bids/participants.tsv
+grep "1XXXX" /data/BIDS/participants.tsv >> ./test_bids/participants.tsv
 ```
 
 ---
@@ -152,8 +152,8 @@ grep "14961" /data/BIDS/participants.tsv >> ./test_bids/participants.tsv
 The format must be exactly:
 
 ```
-14961 - NDAR_INV1A2B3C4D
-14962 - NDAR_INV5E6F7G8H
+1XXXX - NDAR_INV1A2B3C4D
+1YYYY - NDAR_INV5E6F7G8H
 ```
 
 Rules:
@@ -172,10 +172,10 @@ Each session folder needs a `sub-XX_ses-YY_scans.tsv` file with scan dates. Use 
 ```bash
 make_scans_tsv \
     --dicom /path/to/dicom/file.dcm \
-    --session ./test_bids/sub-14961/ses-24496
+    --session ./test_bids/sub-1XXXX/ses-2XXXX
 ```
 
-This reads the acquisition date from the DICOM header and writes `sub-14961_ses-24496_scans.tsv` directly into the session folder.
+This reads the acquisition date from the DICOM header and writes `sub-1XXXX_ses-2XXXX_scans.tsv` directly into the session folder.
 
 Repeat for every session of every subject before running `bids2nda`. If you have many sessions, it is recommended to script this step.
 

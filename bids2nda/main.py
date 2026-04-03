@@ -274,7 +274,8 @@ def run(args):
         dict_append(image03_dict, 'image_resolution2', nii.header.get_zooms()[1])
         dict_append(image03_dict, 'image_resolution3', nii.header.get_zooms()[2])
         dict_append(image03_dict, 'image_slice_thickness', metadata_const.get("SliceThickness", nii.header.get_zooms()[2]))
-        dict_append(image03_dict, 'photomet_interpret', metadata.get("global",{}).get("const",{}).get("PhotometricInterpretation",""))
+        _photomet = metadata.get("global",{}).get("const",{}).get("PhotometricInterpretation","")
+        dict_append(image03_dict, 'photomet_interpret', _photomet if _photomet else "MONOCHROME2")
         if len(nii.shape) > 3:
             image_resolution4 = nii.header.get_zooms()[3]
         else:
@@ -402,9 +403,9 @@ def run(args):
 
     image03_df = pd.DataFrame(image03_dict)
 
-    with open(os.path.join(args.output_directory, "image03.txt"), "w") as out_fp:
-        out_fp.write('"image"\t"3"\n')
-        image03_df.to_csv(out_fp, sep="\t", index=False, quoting=csv.QUOTE_ALL)
+    with open(os.path.join(args.output_directory, "image03.csv"), "w") as out_fp:
+        out_fp.write('image,3\n')
+        image03_df.to_csv(out_fp, sep=",", index=False, quoting=csv.QUOTE_MINIMAL)
 
 def main():
     class MyParser(argparse.ArgumentParser):

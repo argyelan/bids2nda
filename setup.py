@@ -51,7 +51,8 @@ setup(
     # project is installed.
     install_requires = ["future",
                         "pandas",
-                        'nibabel'],
+                        'nibabel',
+                        'pydicom'],
 
     include_package_data=True,
 
@@ -61,6 +62,7 @@ setup(
     entry_points={
         'console_scripts': [
             'bids2nda=bids2nda.main:main',
+            'make_scans_tsv=bids2nda.make_scans_tsv:main',
         ],
     },
 )

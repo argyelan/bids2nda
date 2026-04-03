@@ -230,7 +230,7 @@ Required fields:
 | `race` | NDA controlled vocabulary |
 | `ethnic_group` | NDA controlled vocabulary |
 
-> **Note:** `siblings_living_together` is a mandatory field — do not forget to fill it in (e.g. `No`).
+> **Note:** `siblings_study` is a mandatory field — do not forget to fill it in (e.g. `No`).
 
 ---
 
